@@ -1,0 +1,31 @@
+Assignment-1_Session-3
+
+Problem Statement:
+
+1. How many vowels are there in the names of USA States?
+
+Answer- 
+USArrests
+State <- rownames(USArrests)
+State <- paste(State, collapse = "")
+State <- tolower(strsplit(State, "")[[1]])
+table(State)
+distribution <- as.data.frame(table(State))
+colnames(distribution) <- c("letters", "Freq")
+library(dplyr)
+filter(distribution, letters %in% c("a","e","i","o","u"))
+
+
+2. Visualize the vowels distribution.
+
+Answer-
+# Plotting barplot to visualise frequency of each vowels.
+
+Vowel_Dist <- filter(distribution, letters %in% c("a","e","i","o","u"))
+barplot(Vowel_Dist$Freq, main="Vowel Distribution", horiz=F,
+        axes = T,
+        axisnames = T,
+        xlab = "Vowels",
+        ylab = "Frequency",
+        names.arg=c("A", "E", "I", "O", "U"))
+
